@@ -244,6 +244,9 @@ def main(profondeur=4):
         if en_cours: pygame.display.update()
         clock.tick(60)
         if est_tour_bot(partie, couleur_joueur) and profondeur > 0 and not viens_de_jouer:
+            pygame.time.wait(500)
+            utils.afficher_texte(fenêtre, largeur_fenêtre // 2, decalage // 2, f"{joueur2.nom} réfléchit...", 45, utils.dict_couleurs["bleu marin"])
+            pygame.display.flip()
             pièce_choisie, coup_choisi = joueur2.trouver_coup(partie)
             pièce_choisie.bouge(coup_choisi[0], coup_choisi[1], partie.grille)
             partie.compteur_de_tour += 1
