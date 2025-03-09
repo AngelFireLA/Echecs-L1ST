@@ -267,7 +267,7 @@ def main(profondeur=4):
 
         viens_de_jouer = False
 
-def main_multi(profondeur=4):
+def main_multi():
 
     clock = pygame.time.Clock()
     fenêtre = pygame.display.set_mode((largeur_fenêtre, hauteur_fenêtre))
@@ -327,7 +327,7 @@ def main_multi(profondeur=4):
                     continue
                 pièce_actuelle = partie.grille[case_actuelle[1]][case_actuelle[0]]
                 if pièce_sélectionnée:
-                    if pièce_sélectionnée.couleur != partie.tour_joueur or (profondeur > 0 and pièce_sélectionnée.couleur != couleur_joueur):
+                    if pièce_sélectionnée.couleur != partie.tour_joueur or pièce_sélectionnée.couleur != couleur_joueur:
                         print("Ce n'est pas votre pièce/tour, joueur", couleur_joueur)
                         continue
 
@@ -367,7 +367,7 @@ def main_multi(profondeur=4):
                 else:
                     if not (pièce_actuelle and pièce_actuelle.couleur == partie.tour_joueur):
                         continue
-                    if profondeur > 0 and pièce_actuelle.couleur != couleur_joueur:
+                    if pièce_actuelle.couleur != couleur_joueur:
                         print("Ce n'est pas votre pièce/tour, joueur", couleur_joueur)
                         continue
                     pièce_sélectionnée = pièce_actuelle
