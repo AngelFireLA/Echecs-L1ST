@@ -10,7 +10,7 @@ from interface import menu_pause
 from moteur.joueur import Joueur
 from moteur.partie import Partie
 from moteur.pièces.roi import Roi
-from utils import couleurs_cases
+from utils import couleurs_cases, chemin_absolu_dossier
 
 
 def afficher_grille(fenêtre, couleur_joueur):
@@ -50,27 +50,27 @@ taille_case = 90
 decalage = 60
 largeur_fenêtre = taille_case * 8 + decalage * 2
 hauteur_fenêtre = taille_case * 8 + decalage * 2
-arriere_plan = pygame.image.load("assets/images/menu_arrière_plan.jpg")
+arriere_plan = pygame.image.load(chemin_absolu_dossier+"assets/images/menu_arrière_plan.jpg")
 arriere_plan = pygame.transform.scale(arriere_plan, (largeur_fenêtre, hauteur_fenêtre))
-image_case_séléctionnée = pygame.image.load("assets/images/case_séléctionnée.png")
+image_case_séléctionnée = pygame.image.load(chemin_absolu_dossier+"assets/images/case_séléctionnée.png")
 image_case_séléctionnée = pygame.transform.scale(image_case_séléctionnée, (taille_case, taille_case))
 taille_pièce = int(90/100 * taille_case), int(90/100 * taille_case)
 images_pièces = {
     "blanc": {
-        "pion": pygame.image.load("assets/images/pion blanc.png"),
-        "tour": pygame.image.load("assets/images/tour blanc.png"),
-        "cavalier": pygame.image.load("assets/images/cavalier blanc.png"),
-        "fou": pygame.image.load("assets/images/fou blanc.png"),
-        "dame": pygame.image.load("assets/images/dame blanc.png"),
-        "roi": pygame.image.load("assets/images/roi blanc.png")
+        "pion": pygame.image.load(chemin_absolu_dossier+"assets/images/pion blanc.png"),
+        "tour": pygame.image.load(chemin_absolu_dossier+"assets/images/tour blanc.png"),
+        "cavalier": pygame.image.load(chemin_absolu_dossier+"assets/images/cavalier blanc.png"),
+        "fou": pygame.image.load(chemin_absolu_dossier+"assets/images/fou blanc.png"),
+        "dame": pygame.image.load(chemin_absolu_dossier+"assets/images/dame blanc.png"),
+        "roi": pygame.image.load(chemin_absolu_dossier+"assets/images/roi blanc.png")
     },
     "noir": {
-        "pion": pygame.image.load("assets/images/pion noir.png"),
-        "tour": pygame.image.load("assets/images/tour noir.png"),
-        "cavalier": pygame.image.load("assets/images/cavalier noir.png"),
-        "fou": pygame.image.load("assets/images/fou noir.png"),
-        "dame": pygame.image.load("assets/images/dame noir.png"),
-        "roi": pygame.image.load("assets/images/roi noir.png")
+        "pion": pygame.image.load(chemin_absolu_dossier+"assets/images/pion noir.png"),
+        "tour": pygame.image.load(chemin_absolu_dossier+"assets/images/tour noir.png"),
+        "cavalier": pygame.image.load(chemin_absolu_dossier+"assets/images/cavalier noir.png"),
+        "fou": pygame.image.load(chemin_absolu_dossier+"assets/images/fou noir.png"),
+        "dame": pygame.image.load(chemin_absolu_dossier+"assets/images/dame noir.png"),
+        "roi": pygame.image.load(chemin_absolu_dossier+"assets/images/roi noir.png")
     }
 }
 
@@ -106,7 +106,7 @@ def vérifie_fin_de_partie(partie: Partie, zobrist_grille, fenêtre, couleur_jou
         afficher_pièces(fenêtre, partie.grille, couleur_joueur)
         pygame.display.flip()
         pygame.time.wait(1000)
-        pygame.mixer.music.load("assets/audio/game-end.mp3")
+        pygame.mixer.music.load(chemin_absolu_dossier + "assets/audio/game-end.mp3")
         pygame.mixer.music.play()
         texte_afficher = f"Victoire de {joueur_actuel.nom} !"
         if multi:
@@ -125,7 +125,7 @@ def vérifie_fin_de_partie(partie: Partie, zobrist_grille, fenêtre, couleur_jou
         afficher_pièces(fenêtre, partie.grille, couleur_joueur)
         pygame.display.flip()
         pygame.time.wait(1000)
-        pygame.mixer.music.load("assets/audio/game-end.mp3")
+        pygame.mixer.music.load(chemin_absolu_dossier+"assets/audio/game-end.mp3")
         pygame.mixer.music.play()
         utils.afficher_texte(fenêtre, largeur_fenêtre // 2, hauteur_fenêtre // 2, f"Match nul !", 60, utils.dict_couleurs["bleu marin"])
         pygame.display.flip()
@@ -199,10 +199,10 @@ def main(profondeur=4):
                         partie.compteur_de_tour += 1
                         partie.grilles.append(utils.copier_grille(partie.grille))
                         if len(partie.grilles) > 1 and utils.nombre_pièces_restantes(partie.grilles[-1]) < utils.nombre_pièces_restantes(partie.grilles[-2]):
-                            pygame.mixer.music.load("assets/audio/capture.mp3")
+                            pygame.mixer.music.load(chemin_absolu_dossier+"assets/audio/capture.mp3")
                             pygame.mixer.music.play()
                         else:
-                            pygame.mixer.music.load("assets/audio/move-self.mp3")
+                            pygame.mixer.music.load(chemin_absolu_dossier+"assets/audio/move-self.mp3")
                             pygame.mixer.music.play()
                         grille_zobrist = negamax.zobrist_hash(partie.grille)
                         partie.répétitions.append(negamax.zobrist_hash(partie.grille))
@@ -253,10 +253,10 @@ def main(profondeur=4):
             partie.grilles.append(utils.copier_grille(partie.grille))
             if len(partie.grilles) > 1 and utils.nombre_pièces_restantes(
                     partie.grilles[-1]) < utils.nombre_pièces_restantes(partie.grilles[-2]):
-                pygame.mixer.music.load("assets/audio/capture.mp3")
+                pygame.mixer.music.load(chemin_absolu_dossier+"assets/audio/capture.mp3")
                 pygame.mixer.music.play()
             else:
-                pygame.mixer.music.load("assets/audio/move-self.mp3")
+                pygame.mixer.music.load(chemin_absolu_dossier+"assets/audio/move-self.mp3")
                 pygame.mixer.music.play()
             grille_zobrist = negamax.zobrist_hash(partie.grille)
             partie.répétitions.append(negamax.zobrist_hash(partie.grille))
@@ -341,10 +341,10 @@ def main_multi():
                         partie.compteur_de_tour += 1
                         partie.grilles.append(utils.copier_grille(partie.grille))
                         if len(partie.grilles) > 1 and utils.nombre_pièces_restantes(partie.grilles[-1]) < utils.nombre_pièces_restantes(partie.grilles[-2]):
-                            pygame.mixer.music.load("assets/audio/capture.mp3")
+                            pygame.mixer.music.load(chemin_absolu_dossier+"assets/audio/capture.mp3")
                             pygame.mixer.music.play()
                         else:
-                            pygame.mixer.music.load("assets/audio/move-self.mp3")
+                            pygame.mixer.music.load(chemin_absolu_dossier+"assets/audio/move-self.mp3")
                             pygame.mixer.music.play()
                         grille_zobrist = negamax.zobrist_hash(partie.grille)
                         partie.répétitions.append(negamax.zobrist_hash(partie.grille))
@@ -398,10 +398,10 @@ def main_multi():
                     partie.grilles.append(utils.copier_grille(partie.grille))
                     if len(partie.grilles) > 1 and utils.nombre_pièces_restantes(
                             partie.grilles[-1]) < utils.nombre_pièces_restantes(partie.grilles[-2]):
-                        pygame.mixer.music.load("assets/audio/capture.mp3")
+                        pygame.mixer.music.load(chemin_absolu_dossier+"assets/audio/capture.mp3")
                         pygame.mixer.music.play()
                     else:
-                        pygame.mixer.music.load("assets/audio/move-self.mp3")
+                        pygame.mixer.music.load(chemin_absolu_dossier+"assets/audio/move-self.mp3")
                         pygame.mixer.music.play()
                     grille_zobrist = negamax.zobrist_hash(partie.grille)
                     partie.répétitions.append(negamax.zobrist_hash(partie.grille))
