@@ -1,5 +1,5 @@
-from moteur.pièce import Pièce
-from moteur.pièces.dame import Dame
+from ..pièce import Pièce
+from .dame import Dame
 
 
 class Pion(Pièce):

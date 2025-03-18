@@ -1,5 +1,5 @@
-from moteur.joueur import Joueur
-from utils import liste_coups_légaux
+from ..moteur.joueur import Joueur
+from ..utils import liste_coups_légaux
 
 
 class Bot(Joueur):

@@ -1,4 +1,4 @@
-from moteur.pièce import Pièce
+from ..pièce import Pièce
 
 
 class Cavalier(Pièce):

@@ -1,15 +1,15 @@
 #from app_interface import chess_game
-import utils
+from .. import utils
 #import moteur.endgame_and_opening_move_finder as endgame_and_opening_move_finder
 #from app_interface import chess_game
-from moteur.pièces.roi import Roi
-from moteur.pièces.dame import Dame
-from moteur.pièces.tour import Tour
-from moteur.pièces.fou import Fou
-from moteur.pièces.cavalier import Cavalier
-from moteur.pièces.pion import Pion
+from .pièces.roi import Roi
+from .pièces.dame import Dame
+from .pièces.tour import Tour
+from .pièces.fou import Fou
+from .pièces.cavalier import Cavalier
+from .pièces.pion import Pion
 import time
-from bots import negamax
+from ..bots import negamax
 
 
 def pièce_depuis_symbole(symbol: str):

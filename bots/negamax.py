@@ -1,9 +1,9 @@
 import random
 import time
 
-import utils
-from bots.bot import Bot
-from utils import liste_coups_légaux, copier_grille, vérifie_si_nul, vérifie_si_victoire, montrer_grille
+from .. import utils
+from .bot import Bot
+from ..utils import liste_coups_légaux, copier_grille, vérifie_si_nul, vérifie_si_victoire, montrer_grille
 
 zobrist = []
 pièce_type_mapping = {"roi": 0, "dame": 1, "tour": 2, "fou": 3, "cavalier": 4, "pion": 5}

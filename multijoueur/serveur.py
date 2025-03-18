@@ -2,7 +2,7 @@ import random
 import socket
 import threading
 import time
-from utils import status_serveur
+from ..utils import status_serveur
 
 class Serveur:
     def __init__(self, ip='0.0.0.0', port=25565):
