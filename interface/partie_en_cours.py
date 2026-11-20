@@ -3,13 +3,13 @@ import socket
 import uuid
 
 import pygame
-from .. import utils
-from ..bots import negamax, bot
-from . import menu_pause
-from ..moteur.joueur import Joueur
-from ..moteur.partie import Partie
-from ..moteur.pièces.roi import Roi
-from ..utils import couleurs_cases, chemin_absolu_dossier
+import utils
+from bots import negamax, bot
+from interface import menu_pause
+from moteur.joueur import Joueur
+from moteur.partie import Partie
+from moteur.pièces.roi import Roi
+from utils import couleurs_cases, chemin_absolu_dossier
 
 
 def afficher_grille(fenêtre, couleur_joueur):

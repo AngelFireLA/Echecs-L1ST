@@ -1,7 +1,7 @@
 import pygame
 
-from . import boutton
-from ..utils import afficher_texte, dict_couleurs, largeur_fenetre, hauteur_fenetre, chemin_absolu_dossier
+from interface import boutton
+from utils import afficher_texte, dict_couleurs, largeur_fenetre, hauteur_fenetre, chemin_absolu_dossier
 
 #from interface import menu_options
 

@@ -1,4 +1,4 @@
-from ..pièce import Pièce
+from moteur.pièce import Pièce
 
 
 class Roi(Pièce):

@@ -1,7 +1,7 @@
 import random
 
-from .bot import Bot
-from ..utils import liste_coups_légaux
+from bots.bot import Bot
+from utils import liste_coups_légaux
 
 
 class RandomBot(Bot):

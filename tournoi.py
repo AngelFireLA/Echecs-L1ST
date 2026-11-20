@@ -3,12 +3,12 @@ import concurrent.futures
 
 import utils
 from moteur.partie import Partie
-from bots import bot, random_bot, negamax, negamax2
+from bots import bot, random_bot, negamax
 
 
 def une_partie(i):
     bot1 = negamax.Negamax("Joueur 1", "blanc", profondeur=4, temps_max=0.01)
-    bot2 = negamax2.Negamax("Joueur 2", "noir", profondeur=4, temps_max=0.01)
+    bot2 = random_bot.RandomBot("Joueur 2", "noir")
     partie = Partie()
     partie.grille_depuis_fen("basique")
     partie.ajouter_joueur(bot1)
@@ -46,7 +46,6 @@ def tournoi(parties: int, max_workers=None):
 
 if __name__ == '__main__':
     negamax.init_transposition()
-    negamax2.init_transposition()
     start_time = time.time()
     resultats = tournoi(1)
     print(resultats, "in", time.time() - start_time, "seconds")
